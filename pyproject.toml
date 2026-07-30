@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "firstcommit"
+version = "0.1.0"
+description = "An open-source contributor onboarding simulator and repository readiness analysis tool."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    {name = "Martina Chiemezuo"}
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
