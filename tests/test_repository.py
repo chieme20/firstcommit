@@ -10,9 +10,21 @@ def test_analyze_repository(mocker):
         "private": False,
     }
 
+    fake_tree = {
+        "tree": [
+            {"path": "README.md"},
+            {"path": "src/main.py"},
+        ]
+    }
+
     mocker.patch(
         "firstcommit.repository.get_repository",
         return_value=fake_repository,
+    )
+
+    mocker.patch(
+        "firstcommit.repository.get_repository_tree",
+        return_value=fake_tree,
     )
 
     result = analyze_repository("chieme20", "firstcommit")
@@ -20,6 +32,9 @@ def test_analyze_repository(mocker):
     assert result["full_name"] == "chieme20/firstcommit"
     assert result["score"] == 75
     assert result["readiness"] == "Good"
+
     assert result["checks"]["description"] is True
     assert result["checks"]["license"] is False
-    
+
+    assert result["onboarding_files"]["README.md"] is True
+    assert result["onboarding_files"]["LICENSE"] is False
