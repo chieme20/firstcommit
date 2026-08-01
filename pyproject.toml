@@ -12,5 +12,8 @@ authors = [
     {name = "Martina Chiemezuo"}
 ]
 
+[project.scripts]
+firstcommit = "firstcommit.cli:main"
+
 [tool.setuptools.packages.find]
 where = ["src"]
