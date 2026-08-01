@@ -18,13 +18,18 @@ def analyze_repository(owner: str, repository: str) -> dict:
 
     onboarding_files = analyze_onboarding_files(tree_data)
 
-    score_result = calculate_readiness_score(repository_data)
+    score_result = calculate_readiness_score(
+        repository_data,
+        onboarding_files,
+    )
 
     return {
         "full_name": repository_data["full_name"],
         "description": repository_data.get("description"),
         "score": score_result["score"],
         "readiness": score_result["readiness"],
+        "metadata_score": score_result["metadata_score"],
+        "onboarding_score": score_result["onboarding_score"],
         "checks": score_result["checks"],
         "onboarding_files": onboarding_files,
     }

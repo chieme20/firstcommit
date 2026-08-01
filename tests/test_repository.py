@@ -30,8 +30,11 @@ def test_analyze_repository(mocker):
     result = analyze_repository("chieme20", "firstcommit")
 
     assert result["full_name"] == "chieme20/firstcommit"
-    assert result["score"] == 75
-    assert result["readiness"] == "Good"
+    assert result["score"] == 50
+    assert result["readiness"] == "Fair"
+
+    assert result["metadata_score"] == 37.5
+    assert result["onboarding_score"] == 12.5
 
     assert result["checks"]["description"] is True
     assert result["checks"]["license"] is False
