@@ -31,8 +31,10 @@ def main():
     print(f"Score: {result['score']}")
     print(f"Readiness: {result['readiness']}")
     print()
+
     print(f"Metadata Score: {result['metadata_score']}")
     print(f"Onboarding Score: {result['onboarding_score']}")
+    print(f"Community Score: {result['community_score']}")
     print()
 
     print("Onboarding Files:")
@@ -40,6 +42,14 @@ def main():
     for file_name, exists in result["onboarding_files"].items():
         status = "✓" if exists else "✗"
         print(f"{file_name:<20} {status}")
+
+    print()
+
+    print("Community Health:")
+
+    for check_name, exists in result["community_health"].items():
+        status = "✓" if exists else "✗"
+        print(f"{check_name:<25} {status}")
 
 
 if __name__ == "__main__":

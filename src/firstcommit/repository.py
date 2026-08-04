@@ -4,6 +4,7 @@ from firstcommit.github_api import (
 )
 from firstcommit.scoring import calculate_readiness_score
 from firstcommit.files import analyze_onboarding_files
+from firstcommit.community import analyze_community_health
 
 
 def analyze_repository(owner: str, repository: str) -> dict:
@@ -18,9 +19,12 @@ def analyze_repository(owner: str, repository: str) -> dict:
 
     onboarding_files = analyze_onboarding_files(tree_data)
 
+    community_health = analyze_community_health(tree_data)
+
     score_result = calculate_readiness_score(
         repository_data,
         onboarding_files,
+        community_health,
     )
 
     return {
@@ -30,6 +34,8 @@ def analyze_repository(owner: str, repository: str) -> dict:
         "readiness": score_result["readiness"],
         "metadata_score": score_result["metadata_score"],
         "onboarding_score": score_result["onboarding_score"],
+        "community_score": score_result["community_score"],
         "checks": score_result["checks"],
         "onboarding_files": onboarding_files,
+        "community_health": community_health,
     }

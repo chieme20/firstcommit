@@ -1,10 +1,12 @@
 def calculate_readiness_score(
     repository: dict,
     onboarding_files: dict,
+    community_health: dict,
 ) -> dict:
     """
     Calculate an overall contributor readiness score
-    based on repository metadata and onboarding files.
+    based on repository metadata, onboarding files,
+    and community health files.
     """
 
     metadata_checks = {
@@ -26,7 +28,17 @@ def calculate_readiness_score(
         if passed:
             onboarding_score += 12.5
 
-    total_score = int(metadata_score + onboarding_score)
+    community_score = 0
+
+    for passed in community_health.values():
+        if passed:
+            community_score += 12.5
+
+    total_score = int(
+        metadata_score
+        + onboarding_score
+        + community_score
+    )
 
     if total_score >= 90:
         readiness = "Excellent"
@@ -45,5 +57,6 @@ def calculate_readiness_score(
         "readiness": readiness,
         "metadata_score": metadata_score,
         "onboarding_score": onboarding_score,
+        "community_score": community_score,
         "checks": metadata_checks,
     }
