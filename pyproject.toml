@@ -8,6 +8,11 @@ version = "0.1.0"
 description = "An open-source contributor onboarding simulator and repository readiness analysis tool."
 readme = "README.md"
 requires-python = ">=3.11"
+
+dependencies = [
+    "requests>=2.31.0"
+]
+
 authors = [
     {name = "Martina Chiemezuo"}
 ]
@@ -17,17 +22,3 @@ firstcommit = "firstcommit.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-[project]
-name = "firstcommit"
-version = "0.1.0"
-description = "An open-source contributor onboarding simulator and repository readiness analysis tool."
-readme = "README.md"
-requires-python = ">=3.11"
-
-dependencies = [
-    "requests>=2.31.0"
-]
-
-authors = [
-    {name = "Martina Chiemezuo"}
-]
