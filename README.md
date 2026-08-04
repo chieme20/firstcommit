@@ -1,5 +1,8 @@
-# firstcommit
-An open-source contributor onboarding simulator that evaluates how easily a new developer can understand, set up, and contribute to a GitHub project.
+# FirstCommit
+
+[![Python Tests](https://github.com/chieme20/firstcommit/actions/workflows/python-tests.yml/badge.svg)](https://github.com/chieme20/firstcommit/actions/workflows/python-tests.yml)
+
+An open-source contributor onboarding simulator and repository readiness analysis tool.
 
 ## Usage
 
